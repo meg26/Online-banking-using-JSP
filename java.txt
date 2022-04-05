@@ -1,0 +1,3 @@
+cd C:\apache-tomcat-8.5.45\webapps\bank\src\com\bank
+
+javac *.java -d ..\..\..\WEB-INF\classes\.

@@ -1,0 +1,55 @@
+create database wad_lab;
+
+use wad_lab
+
+create table users (
+	uid INT NOT NULL AUTO_INCREMENT, 
+	username varchar(20),
+	email VARCHAR(30), 
+	password varchar(20),  
+	CONSTRAINT PRIMARY KEY(uid));
+
+
+create table accounts (
+	aid INT NOT NULL AUTO_INCREMENT,
+	uid INT,
+	accno VARCHAR(15),
+	fname VARCHAR(30), 
+	mname VARCHAR(30), 
+	lname VARCHAR(30),
+	dob DATE, 
+	mobile VARCHAR(10),
+	email VARCHAR(30), 
+	address VARCHAR(100), 
+	acctype VARCHAR(20),
+	balance INT(10),
+	CONSTRAINT PRIMARY KEY(aid),
+	CONSTRAINT UNIQUE KEY(accno),
+	CONSTRAINT FOREIGN KEY(uid) REFERENCES users(uid));
+
+create table transactions (
+	tid INT NOT NULL AUTO_INCREMENT,
+	aid INT,
+	saccno VARCHAR(15),
+	raccno VARCHAR(15),
+	type VARCHAR(10),
+	amount INT(10),
+	date DATE,
+	descr VARCHAR(20),
+	CONSTRAINT PRIMARY KEY(tid));
+
+// Not required
+
+insert into users values(NULL, "test", "test@test.com", "test");
+insert into accounts values (
+	NULL,
+	1,
+	"ffll418644",
+	"Saving Account",
+	"fname",
+	"mname",
+	"lname",
+	"9876543211",
+	"address",
+	curdate(),
+	0);
